@@ -1,0 +1,36 @@
+.show-list {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.show-list ul {
+  list-style: none;
+  padding: 0;
+}
+.show-list li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.show-list button {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.show-list button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+}
+.show-list button:hover:not(:disabled) {
+  background: #4338ca;
+}

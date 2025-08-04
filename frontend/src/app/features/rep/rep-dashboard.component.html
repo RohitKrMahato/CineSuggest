@@ -1,0 +1,12 @@
+<div class="rep-dashboard">
+  <h2>Representative Dashboard</h2>
+  <form (ngSubmit)="addShow()">
+    <input type="number" [(ngModel)]="newShow.theatreId" name="theatreId" placeholder="Theatre ID" required>
+    <input type="number" [(ngModel)]="newShow.movieId" name="movieId" placeholder="Movie ID" required>
+    <input type="text" [(ngModel)]="newShow.timing" name="timing" placeholder="Timing" required>
+    <input type="number" [(ngModel)]="newShow.price" name="price" placeholder="Price" required>
+    <input type="number" [(ngModel)]="newShow.seats" name="seats" placeholder="Seats" required>
+    <button type="submit">Add Show</button>
+  </form>
+  <div *ngIf="message">{{ message }}</div>
+</div>

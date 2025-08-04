@@ -1,0 +1,9 @@
+<div class="booking">
+  <h3>Book Your Ticket</h3>
+  <form (ngSubmit)="onBook()">
+    <label for="seat">Seat Number</label>
+    <input id="seat" type="number" [(ngModel)]="seatNumber" name="seatNumber" required>
+    <button type="submit">Confirm Booking</button>
+  </form>
+  <div *ngIf="message">{{ message }}</div>
+</div>

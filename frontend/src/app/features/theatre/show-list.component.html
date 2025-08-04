@@ -1,0 +1,9 @@
+<div class="show-list">
+  <h3>Shows in {{ selectedTheatre?.name }}</h3>
+  <ul>
+    <li *ngFor="let show of shows">
+      {{ show.movie }} - {{ show.timing }} - ${{ show.price }} - Seats: {{ show.seats }}
+      <button (click)="book(show)" [disabled]="show.seats === 0">Book</button>
+    </li>
+  </ul>
+</div>

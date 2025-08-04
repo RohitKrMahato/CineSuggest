@@ -1,0 +1,8 @@
+<div class="theatre-list"></div>
+  <h2>Theatres Near You</h2>
+  <ul>
+    <li *ngFor="let theatre of theatres" (click)="selectTheatre(theatre)">
+      {{ theatre.name }}
+    </li>
+  </ul>
+</div>

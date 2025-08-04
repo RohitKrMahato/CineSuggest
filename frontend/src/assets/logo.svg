@@ -1,0 +1,10 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="40" fill="#43c6ac"/>
+  <ellipse cx="40" cy="55" rx="22" ry="8" fill="#191654" opacity="0.15"/>
+  <rect x="22" y="22" width="36" height="28" rx="6" fill="#fff" stroke="#191654" stroke-width="2"/>
+  <rect x="28" y="28" width="24" height="16" rx="3" fill="#43c6ac" stroke="#191654" stroke-width="1.5"/>
+  <circle cx="32" cy="36" r="2" fill="#191654"/>
+  <circle cx="48" cy="36" r="2" fill="#191654"/>
+  <rect x="36" y="40" width="8" height="4" rx="2" fill="#191654"/>
+  <text x="40" y="70" text-anchor="middle" font-size="12" font-family="Inter, Arial, sans-serif" fill="#fff">Movie Vibe</text>
+</svg>

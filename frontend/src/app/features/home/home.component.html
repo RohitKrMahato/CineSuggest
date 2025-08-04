@@ -1,15 +1,17 @@
-<div class="home-container">
-  <div class="logo">
-    <span class="icon">🎬</span>
-  </div>
-  <h1 class="animated-heading">Welcome to <span class="brand">Movie Vibe</span>!</h1>
-  <p class="subtitle">Book tickets and manage theatres with ease.</p>
-  <div class="home-actions">
-    <a routerLink="/theatres" class="btn btn-large">
-      <span class="btn-icon">🏛️</span> Browse Theatres
-    </a>
-    <a routerLink="/admin" class="btn btn-large">
-      <span class="btn-icon">🛠️</span> Admin Dashboard
-    </a>
+<div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="row justify-content-center align-items-center w-100">
+    <div class="col-lg-6 mb-4 mx-auto">
+      <div class="card shadow-lg border-0 w-100">
+        <div class="card-body text-center">
+          <img src="assets/logo.svg" alt="Movie Vibe Logo" class="mb-3" style="width:80px;">
+          <h1 class="card-title h2 text-primary mb-3">Movie Vibe</h1>
+          <p class="card-text mb-4">Book your movie tickets instantly. Discover theatres, book seats in real time, and get personalized movie suggestions. Enjoy a seamless experience with Movie Vibe!</p>
+          <div class="d-grid gap-2">
+            <a routerLink="/theatres" class="btn btn-primary btn-lg">Browse Theatres</a>
+            <a routerLink="/admin" class="btn btn-success btn-lg">Admin Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

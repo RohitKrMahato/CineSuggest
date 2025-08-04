@@ -1,9 +1,43 @@
+.theatre-screen {
+  background: #f8fafc;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(99,102,241,0.10);
+  padding: 2rem;
+  max-width: 700px;
+  margin: 2rem auto;
+}
+.theatre-screen h2 {
+  text-align: center;
+  color: #6366f1;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+.date-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.date-picker label {
+  margin-right: 1rem;
+  font-weight: 500;
+}
+.date-picker input[type="date"] {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+}
 .theatre-list {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 1.5rem;
   margin-bottom: 2rem;
+}
+.theatre-list h3 {
+  color: #4338ca;
+  margin-bottom: 0.5rem;
 }
 .theatre-list ul {
   list-style: none;
@@ -12,11 +46,77 @@
 .theatre-list li {
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
-  background: #f5f5f5;
-  border-radius: 4px;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+  border: 2px solid transparent;
+}
+.theatre-list li.selected {
+  background: #e0e7ff;
+  border-color: #6366f1;
+}
+.theatre-name {
+  font-weight: 600;
+  color: #6366f1;
+}
+.theatre-location {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+.show-list h3 {
+  color: #059669;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.show-list ul {
+  list-style: none;
+  padding: 0;
+}
+.show-list li {
+  background: #fff;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.show-movie {
+  font-weight: 500;
+  color: #6366f1;
+}
+.show-timing {
+  margin: 0 1rem;
+  color: #64748b;
+}
+.show-price {
+  color: #059669;
+  font-weight: 600;
+  margin-right: 1rem;
+}
+.show-list button {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background 0.2s;
 }
-.theatre-list li:hover {
-  background: #e0e7ff;
+.show-list button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+}
+.show-list button:hover:not(:disabled) {
+  background: #4338ca;
+}
+.message {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #ef4444;
+  font-size: 1.1rem;
 }

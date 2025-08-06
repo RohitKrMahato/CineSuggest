@@ -1,8 +1,28 @@
-<div class="theatre-list"></div>
-  <h2>Theatres Near You</h2>
-  <ul>
-    <li *ngFor="let theatre of theatres" (click)="selectTheatre(theatre)">
-      {{ theatre.name }}
-    </li>
-  </ul>
+<div class="theatre-screen">
+  <h2>🎬 Select Your Theatre & Show</h2>
+  <div class="date-picker">
+    <label for="show-date">Choose Date:</label>
+    <input id="show-date" type="date" [(ngModel)]="selectedDate" (change)="onDateChange(selectedDate)">
+  </div>
+  <div class="theatre-list">
+    <h3>Theatres</h3>
+    <ul>
+      <li *ngFor="let theatre of theatres" (click)="onSelectTheatre(theatre)" [class.selected]="selectedTheatre?.id === theatre.id">
+        <span class="theatre-name">{{ theatre.name }}</span>
+        <span class="theatre-location">({{ theatre.location }})</span>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="selectedTheatre" class="show-list">
+    <h3>Available Shows for {{ selectedDate }} in {{ selectedTheatre.name }}</h3>
+    <ul>
+      <li *ngFor="let show of shows">
+        <span class="show-movie">{{ show.movie }}</span>
+        <span class="show-timing">{{ show.timing | date:'shortTime' }}</span>
+        <span class="show-price">${{ show.price }}</span>
+        <button (click)="onBook(show)" [disabled]="show.seats === 0">Book</button>
+      </li>
+    </ul>
+  </div>
+  <div class="message" *ngIf="message">{{ message }}</div>
 </div>

@@ -1,12 +1,3 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
@@ -251,29 +242,7 @@
     <p>Book your favorite movies in theatres near you!</p>
   </header>
   <main class="main-content">
-    <section class="feature-section">
-      <div class="feature-card">
-        <h2>Find Theatres</h2>
-        <p>Browse theatres and shows by your location.</p>
-        <button routerLink="/theatres">Explore Theatres</button>
-      </div>
-      <div class="feature-card">
-        <h2>Book Tickets</h2>
-        <p>Choose your seats and book tickets in real time.</p>
-        <button routerLink="/booking">Book Now</button>
-      </div>
-      <div class="feature-card">
-        <h2>Suggestions</h2>
-        <p>Get movie suggestions based on popularity and your interests.</p>
-        <button routerLink="/suggestions">See Suggestions</button>
-      </div>
-      <div class="feature-card">
-        <h2>Admin & Rep Dashboards</h2>
-        <p>Manage theatres, shows, and seating arrangements.</p>
-        <button routerLink="/admin">Admin</button>
-        <button routerLink="/rep">Representative</button>
-      </div>
-    </section>
+    <router-outlet></router-outlet>
   </main>
   <footer class="app-footer">
     <p>&copy; 2025 Movie Ticket Booking. All rights reserved.</p>
@@ -287,6 +256,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-<router-outlet />

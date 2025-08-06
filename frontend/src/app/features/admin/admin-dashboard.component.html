@@ -1,10 +1,78 @@
 <div class="admin-dashboard">
   <h2>Admin Dashboard</h2>
-  <form (ngSubmit)="addTheatre()">
-    <input type="text" [(ngModel)]="newTheatre.name" name="name" placeholder="Theatre Name" required>
-    <input type="text" [(ngModel)]="newTheatre.location" name="location" placeholder="Location" required>
-    <input type="number" [(ngModel)]="newTheatre.representativeId" name="representativeId" placeholder="Representative User ID" required>
-    <button type="submit">Add Theatre</button>
-  </form>
-  <div *ngIf="message">{{ message }}</div>
+  <div class="dashboard-tabs">
+    <button (click)="activeTab = 'add'" [class.active]="activeTab === 'add'">Add</button>
+    <button (click)="activeTab = 'list'" [class.active]="activeTab === 'list'">List</button>
+  </div>
+
+  <div *ngIf="activeTab === 'add'">
+    <div class="dashboard-section">
+      <h3>Add Theater</h3>
+      <form (ngSubmit)="addTheatre()" class="dashboard-form">
+        <input type="text" [(ngModel)]="newTheatre.name" name="name" placeholder="Theater Name" required>
+        <input type="text" [(ngModel)]="newTheatre.location" name="location" placeholder="Location" required>
+        <button type="submit">Add Theater</button>
+      </form>
+    </div>
+
+    <div class="dashboard-section">
+      <h3>Add Movie</h3>
+      <form (ngSubmit)="addMovie()" class="dashboard-form">
+        <input type="text" [(ngModel)]="newMovie.title" name="title" placeholder="Movie Title" required>
+        <input type="text" [(ngModel)]="newMovie.genre" name="genre" placeholder="Genre" required>
+        <button type="submit">Add Movie</button>
+      </form>
+    </div>
+
+    <div class="dashboard-section">
+      <h3>Add Show</h3>
+      <form (ngSubmit)="addShow()" class="dashboard-form">
+        <select [(ngModel)]="newShow.theaterId" name="theaterId" required>
+          <option value="" disabled selected>Select Theater</option>
+          <option *ngFor="let t of data.theaters" [value]="t.id">{{t.name}}</option>
+        </select>
+        <select [(ngModel)]="newShow.movieId" name="movieId" required>
+          <option value="" disabled selected>Select Movie</option>
+          <option *ngFor="let m of data.movies" [value]="m.id">{{m.title}}</option>
+        </select>
+        <input type="time" [(ngModel)]="newShow.time" name="time" required>
+        <button type="submit">Add Show</button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="activeTab === 'list'">
+    <div class="dashboard-section">
+      <h3>List of Theaters</h3>
+      <ul class="dashboard-list">
+        <li *ngFor="let t of data.theaters" class="dashboard-list-item">
+          <span>{{t.name}} ({{t.location}})</span>
+          <button (click)="editTheatre(t)">Edit</button>
+          <button (click)="deleteTheatre(t.id)">Delete</button>
+        </li>
+      </ul>
+    </div>
+    <div class="dashboard-section">
+      <h3>List of Movies</h3>
+      <ul class="dashboard-list">
+        <li *ngFor="let m of data.movies" class="dashboard-list-item">
+          <span>{{m.title}} ({{m.genre}})</span>
+          <button (click)="editMovie(m)">Edit</button>
+          <button (click)="deleteMovie(m.id)">Delete</button>
+        </li>
+      </ul>
+    </div>
+    <div class="dashboard-section">
+      <h3>List of Shows</h3>
+      <ul class="dashboard-list">
+        <li *ngFor="let s of data.shows" class="dashboard-list-item">
+          <span>
+            Theater: {{getTheaterName(s.theaterId)}}, Movie: {{getMovieTitle(s.movieId)}}, Time: {{s.time}}
+          </span>
+          <button (click)="editShow(s)">Edit</button>
+          <button (click)="deleteShow(s.id)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

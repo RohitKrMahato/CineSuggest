@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SuggestionListComponent } from './suggestion-list.component';
 
 @NgModule({
-  declarations: [SuggestionListComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, SuggestionListComponent],
   exports: [SuggestionListComponent]
 })
 export class SuggestionModule {}

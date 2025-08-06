@@ -9,6 +9,6 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'theatres', component: TheatreListComponent },
   { path: 'admin', component: AdminDashboardComponent },
-  { path: 'rep', component: RepDashboardComponent },
+  { path: 'rep', component: RepDashboardComponent }
   // Add other routes as needed
 ];

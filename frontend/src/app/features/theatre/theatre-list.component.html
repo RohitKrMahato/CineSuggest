@@ -1,28 +1,121 @@
-<div class="theatre-screen">
-  <h2>🎬 Select Your Theatre & Show</h2>
-  <div class="date-picker">
-    <label for="show-date">Choose Date:</label>
-    <input id="show-date" type="date" [(ngModel)]="selectedDate" (change)="onDateChange(selectedDate)">
+<div class="theatres-container">
+  <div class="header">
+    <h1 class="page-title">🏛️ Choose Your Theatre</h1>
+    <p class="page-subtitle">Select your preferred cinema and show times for the perfect movie experience</p>
   </div>
-  <div class="theatre-list">
-    <h3>Theatres</h3>
-    <ul>
-      <li *ngFor="let theatre of theatres" (click)="onSelectTheatre(theatre)" [class.selected]="selectedTheatre?.id === theatre.id">
-        <span class="theatre-name">{{ theatre.name }}</span>
-        <span class="theatre-location">({{ theatre.location }})</span>
-      </li>
-    </ul>
+
+  <!-- Date Selection -->
+  <div class="date-selection">
+    <div class="date-picker-card">
+      <div class="date-icon">📅</div>
+      <div class="date-input-group">
+        <label for="show-date">Select Date</label>
+        <input 
+          id="show-date" 
+          type="date" 
+          [(ngModel)]="selectedDate" 
+          (change)="onDateChange(selectedDate)"
+          class="date-input">
+      </div>
+    </div>
   </div>
-  <div *ngIf="selectedTheatre" class="show-list">
-    <h3>Available Shows for {{ selectedDate }} in {{ selectedTheatre.name }}</h3>
-    <ul>
-      <li *ngFor="let show of shows">
-        <span class="show-movie">{{ show.movie }}</span>
-        <span class="show-timing">{{ show.timing | date:'shortTime' }}</span>
-        <span class="show-price">${{ show.price }}</span>
-        <button (click)="onBook(show)" [disabled]="show.seats === 0">Book</button>
-      </li>
-    </ul>
+
+  <!-- Theatres Grid -->
+  <div class="theatres-section">
+    <h2 class="section-title">🍿 Available Theatres</h2>
+    <div class="theatres-grid">
+      @for (theatre of theatres; track theatre.id) {
+        <div 
+          class="theatre-card"
+          [class.selected]="selectedTheatre?.id === theatre.id"
+          (click)="onSelectTheatre(theatre)">
+          <div class="theatre-icon">🎭</div>
+          <div class="theatre-info">
+            <h3 class="theatre-name">{{ theatre.name }}</h3>
+            <p class="theatre-location">📍 {{ theatre.location }}</p>
+            <div class="theatre-status">
+              <span class="status-dot"></span>
+              <span>Available Now</span>
+            </div>
+          </div>
+          <div class="selection-indicator">
+            @if (selectedTheatre?.id === theatre.id) {
+              <span class="selected-icon">✓</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
   </div>
-  <div class="message" *ngIf="message">{{ message }}</div>
+
+  <!-- Shows Section -->
+  @if (selectedTheatre) {
+    <div class="shows-section">
+      <h2 class="section-title">
+        🎬 Shows at {{ selectedTheatre.name }}
+        @if (selectedDate) {
+          <span class="date-badge">{{ selectedDate }}</span>
+        }
+      </h2>
+      
+      @if (shows && shows.length > 0) {
+        <div class="shows-grid">
+          @for (show of shows; track show.id) {
+            <div class="show-card">
+              <div class="show-header">
+                <div class="movie-poster">🎬</div>
+                <div class="movie-info">
+                  <h3 class="movie-title">{{ show.movie }}</h3>
+                  <div class="show-details">
+                    <span class="show-time">🕐 {{ show.timing | date:'shortTime' }}</span>
+                    <span class="show-price">💰 ${{ show.price }}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="seat-info">
+                @if (show.seats > 0) {
+                  <span class="seats-available">{{ show.seats }} seats available</span>
+                } @else {
+                  <span class="seats-full">House Full</span>
+                }
+              </div>
+              
+              <button 
+                class="book-btn"
+                [disabled]="show.seats === 0"
+                (click)="onBook(show)">
+                @if (show.seats > 0) {
+                  <span class="btn-icon">🎫</span> Book Now
+                } @else {
+                  <span class="btn-icon">🚫</span> Sold Out
+                }
+              </button>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="no-shows">
+          <div class="no-shows-icon">🎭</div>
+          <h3>No Shows Available</h3>
+          <p>No shows scheduled for the selected date. Please choose a different date.</p>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Message Display -->
+  @if (message) {
+    <div class="message-card">
+      <div class="message-icon">ℹ️</div>
+      <p>{{ message }}</p>
+    </div>
+  }
+
+  <!-- Back Navigation -->
+  <div class="back-nav">
+    <a routerLink="/home" class="btn btn-back">
+      <span class="btn-icon">🏠</span> Back to Home
+    </a>
+  </div>
 </div>

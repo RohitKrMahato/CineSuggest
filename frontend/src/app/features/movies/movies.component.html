@@ -1,0 +1,49 @@
+<div class="movies-container">
+  <div class="header">
+    <h1 class="page-title">🎬 Latest Movies</h1>
+    <p class="page-subtitle">Discover and book tickets for the hottest movies in theaters now!</p>
+  </div>
+
+  <div class="movies-grid">
+    @for (movie of movies; track movie.id) {
+      <div class="movie-card">
+        <div class="movie-poster">
+          <span class="poster-emoji">{{ movie.poster }}</span>
+          <div class="movie-rating">{{ movie.rating }}</div>
+        </div>
+        
+        <div class="movie-info">
+          <h3 class="movie-title">{{ movie.title }}</h3>
+          <p class="movie-genre">{{ movie.genre }}</p>
+          <p class="movie-duration">⏱️ {{ movie.duration }}</p>
+          <p class="movie-description">{{ movie.description }}</p>
+        </div>
+
+        <div class="showtimes">
+          <h4>Available Showtimes:</h4>
+          <div class="showtimes-grid">
+            @for (showtime of movie.showtimes; track showtime) {
+              <button 
+                class="showtime-btn"
+                (click)="bookMovie(movie, showtime)">
+                {{ showtime }}
+              </button>
+            }
+          </div>
+        </div>
+
+        @if (!isAuthenticated) {
+          <div class="auth-notice">
+            <p>🔐 <a routerLink="/login">Login</a> to book tickets</p>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="back-nav">
+    <a routerLink="/home" class="btn btn-back">
+      <span class="btn-icon">🏠</span> Back to Home
+    </a>
+  </div>
+</div> 

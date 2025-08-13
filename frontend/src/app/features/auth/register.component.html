@@ -1,0 +1,182 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <div class="logo">
+        <span class="icon">🎬</span>
+      </div>
+      <h1>Join Movie Vibe</h1>
+      <p>Create your account to start booking tickets</p>
+    </div>
+
+    <div class="register-content">
+      <!-- Error Message -->
+      @if (error) {
+        <div class="error-message">
+          <span class="error-icon">⚠️</span>
+          {{ error }}
+        </div>
+      }
+
+      <!-- Registration Form -->
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              placeholder="Choose a username"
+              [class.invalid]="isFieldInvalid('username')"
+              autocomplete="username"
+            />
+            @if (isFieldInvalid('username')) {
+              <div class="field-error">
+                {{ getFieldError('username') }}
+              </div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              placeholder="Enter your email"
+              [class.invalid]="isFieldInvalid('email')"
+              autocomplete="email"
+            />
+            @if (isFieldInvalid('email')) {
+              <div class="field-error">
+                {{ getFieldError('email') }}
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input
+            type="text"
+            id="location"
+            formControlName="location"
+            placeholder="Your city/location"
+            [class.invalid]="isFieldInvalid('location')"
+            autocomplete="address-level2"
+          />
+          @if (isFieldInvalid('location')) {
+            <div class="field-error">
+              {{ getFieldError('location') }}
+            </div>
+          }
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-input">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                id="password"
+                formControlName="password"
+                placeholder="Create password"
+                [class.invalid]="isFieldInvalid('password')"
+                autocomplete="new-password"
+              />
+              <button
+                type="button"
+                class="password-toggle"
+                (click)="togglePasswordVisibility('password')"
+                aria-label="Toggle password visibility"
+              >
+                <span>{{ showPassword ? '👁️' : '🙈' }}</span>
+              </button>
+            </div>
+            @if (isFieldInvalid('password')) {
+              <div class="field-error">
+                {{ getFieldError('password') }}
+              </div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="password-input">
+              <input
+                [type]="showConfirmPassword ? 'text' : 'password'"
+                id="confirmPassword"
+                formControlName="confirmPassword"
+                placeholder="Confirm password"
+                [class.invalid]="isFieldInvalid('confirmPassword')"
+                autocomplete="new-password"
+              />
+              <button
+                type="button"
+                class="password-toggle"
+                (click)="togglePasswordVisibility('confirmPassword')"
+                aria-label="Toggle confirm password visibility"
+              >
+                <span>{{ showConfirmPassword ? '👁️' : '🙈' }}</span>
+              </button>
+            </div>
+            @if (isFieldInvalid('confirmPassword')) {
+              <div class="field-error">
+                {{ getFieldError('confirmPassword') }}
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="password-requirements">
+          <h4>Password Requirements:</h4>
+          <ul>
+            <li [class.met]="registerForm.get('password')?.value?.length >= 6">
+              At least 6 characters long
+            </li>
+            <li [class.met]="registerForm.get('password')?.value === registerForm.get('confirmPassword')?.value && registerForm.get('confirmPassword')?.value">
+              Passwords match
+            </li>
+          </ul>
+        </div>
+
+        <button
+          type="submit"
+          class="register-btn"
+          [disabled]="loading"
+          [class.loading]="loading"
+        >
+          @if (!loading) {
+            <span>Create Account</span>
+          }
+          @if (loading) {
+            <span class="loading-spinner">
+              <span class="spinner"></span>
+              Creating Account...
+            </span>
+          }
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="divider">
+        <span>or</span>
+      </div>
+
+      <!-- Google Sign Up -->
+      <div class="google-signup">
+        <div id="google-signup-button"></div>
+      </div>
+
+      <!-- Sign In Link -->
+      <div class="signin-link">
+        <p>Already have an account? <a routerLink="/login">Sign in here</a></p>
+      </div>
+
+      <!-- Terms -->
+      <div class="terms">
+        <p>By creating an account, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+      </div>
+    </div>
+  </div>
+</div> 

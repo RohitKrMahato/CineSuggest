@@ -3,13 +3,50 @@
     <span class="icon">🎬</span>
   </div>
   <h1 class="animated-heading">Welcome to <span class="brand">Movie Vibe</span>!</h1>
-  <p class="subtitle">Book tickets and manage theatres with ease.</p>
-  <div class="home-actions">
-    <a routerLink="/theatres" class="btn btn-large">
-      <span class="btn-icon">🏛️</span> Browse Theatres
+  <p class="subtitle">Your ultimate destination for movie ticket booking and theater management.</p>
+  
+  <!-- Authentication Actions -->
+  <div class="auth-actions">
+    <a routerLink="/login" class="btn btn-primary">
+      <span class="btn-icon">🔑</span> Sign In
     </a>
-    <a routerLink="/admin" class="btn btn-large">
-      <span class="btn-icon">🛠️</span> Admin Dashboard
+    <a routerLink="/register" class="btn btn-secondary">
+      <span class="btn-icon">✨</span> Join Now
     </a>
+  </div>
+
+  <!-- Features Section -->
+  <div class="features">
+    <a routerLink="/movies" class="feature-card feature-link">
+      <div class="feature-icon">🎬</div>
+      <h3>Latest Movies</h3>
+      <p>Discover and book tickets for the latest blockbusters and indie films</p>
+      <div class="feature-cta">Explore Movies →</div>
+    </a>
+    <a routerLink="/theatres" class="feature-card feature-link">
+      <div class="feature-icon">🏛️</div>
+      <h3>Multiple Theatres</h3>
+      <p>Choose from theaters in your area with real-time seat availability</p>
+      <div class="feature-cta">Browse Theatres →</div>
+    </a>
+    <a routerLink="/dashboard" class="feature-card feature-link">
+      <div class="feature-icon">📱</div>
+      <h3>Easy Booking</h3>
+      <p>Simple and secure online booking with instant confirmation</p>
+      <div class="feature-cta">Start Booking →</div>
+    </a>
+  </div>
+
+  <!-- Demo Actions -->
+  <div class="demo-actions">
+    <p class="demo-text">Explore without signing up:</p>
+    <div class="demo-buttons">
+      <a routerLink="/theatres" class="btn btn-outline">
+        <span class="btn-icon">🏛️</span> Browse Theatres
+      </a>
+      <a routerLink="/admin-demo" class="btn btn-outline">
+        <span class="btn-icon">🛠️</span> Admin Demo
+      </a>
+    </div>
   </div>
 </div>

@@ -1,0 +1,131 @@
+@if (!loading) {
+  <div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <div class="user-greeting">
+        <h1>{{ getGreeting() }}, {{ user?.username }}!</h1>
+        <p>{{ getRoleDisplayName() }}</p>
+      </div>
+      <div class="user-profile">
+        <div class="profile-info">
+          <div class="avatar">
+            @if (user?.profile_picture) {
+              <img [src]="user?.profile_picture" [alt]="user?.username">
+            } @else {
+              <span class="avatar-placeholder">
+                {{ user?.username?.charAt(0)?.toUpperCase() }}
+              </span>
+            }
+          </div>
+          <div class="user-details">
+            <span class="username">{{ user?.username }}</span>
+            @if (user?.location) {
+              <span class="location">📍 {{ user?.location }}</span>
+            }
+          </div>
+        </div>
+        <button class="logout-btn" (click)="logout()">
+          <span>🚪</span> Logout
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <div class="dashboard-grid">
+      <!-- Quick Actions -->
+      <section class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="action-cards">
+          <a routerLink="/theatres" class="action-card">
+            <div class="card-icon">🏛️</div>
+            <h3>Browse Theatres</h3>
+            <p>Find theaters in your area and check showtimes</p>
+          </a>
+
+          <a routerLink="/bookings" class="action-card">
+            <div class="card-icon">🎫</div>
+            <h3>My Bookings</h3>
+            <p>View and manage your ticket bookings</p>
+          </a>
+
+          <a routerLink="/suggestions" class="action-card">
+            <div class="card-icon">✨</div>
+            <h3>Movie Suggestions</h3>
+            <p>Discover movies based on your interests</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Admin/Rep Specific Actions -->
+      @if (user?.role === 'admin' || user?.role === 'representative') {
+        <section class="admin-actions">
+        <h2>{{ user?.role === 'admin' ? 'Admin Panel' : 'Theatre Management' }}</h2>
+        <div class="action-cards">
+          @if (user?.role === 'admin') {
+            <a routerLink="/admin" class="action-card admin">
+              <div class="card-icon">🛠️</div>
+              <h3>Admin Dashboard</h3>
+              <p>Manage theaters, users, and system settings</p>
+            </a>
+          }
+
+          @if (user?.role === 'representative') {
+            <a routerLink="/rep" class="action-card rep">
+              <div class="card-icon">🎬</div>
+              <h3>Theatre Dashboard</h3>
+              <p>Manage your theater's movies and shows</p>
+            </a>
+          }
+        </div>
+      </section>
+      }
+
+      <!-- User Stats -->
+      <section class="user-stats">
+        <h2>Your Activity</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">🎬</div>
+            <div class="stat-label">Movies Watched</div>
+            <div class="stat-value">Coming Soon</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">🎫</div>
+            <div class="stat-label">Tickets Booked</div>
+            <div class="stat-value">Coming Soon</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">⭐</div>
+            <div class="stat-label">Favorite Genre</div>
+            <div class="stat-value">{{ user?.interests || 'Not Set' }}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Activity -->
+      <section class="recent-activity">
+        <h2>Recent Activity</h2>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-icon">🎉</div>
+            <div class="activity-content">
+              <p><strong>Welcome to Movie Vibe!</strong></p>
+              <p>Your account was created successfully. Start exploring theaters and booking tickets.</p>
+              <span class="activity-time">{{ user?.created_at }}</span>
+            </div>
+          </div>
+        </div>
+              </section>
+      </div>
+    </main>
+  </div>
+} @else {
+  <!-- Loading Template -->
+  <div class="loading-container">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Loading your dashboard...</p>
+    </div>
+  </div>
+} 

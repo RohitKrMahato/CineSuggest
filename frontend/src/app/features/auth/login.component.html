@@ -1,0 +1,105 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo">
+        <span class="icon">🎬</span>
+      </div>
+      <h1>Welcome Back</h1>
+      <p>Sign in to your Movie Vibe account</p>
+    </div>
+
+    <div class="login-content">
+      <!-- Error Message -->
+      @if (error) {
+        <div class="error-message">
+          <span class="error-icon">⚠️</span>
+          {{ error }}
+        </div>
+      }
+
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+          <label for="login">Email or Username</label>
+          <input
+            type="text"
+            id="login"
+            formControlName="login"
+            placeholder="Enter your email or username"
+            [class.invalid]="isFieldInvalid('login')"
+            autocomplete="username"
+          />
+          @if (isFieldInvalid('login')) {
+            <div class="field-error">
+              {{ getFieldError('login') }}
+            </div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-input">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              id="password"
+              formControlName="password"
+              placeholder="Enter your password"
+              [class.invalid]="isFieldInvalid('password')"
+              autocomplete="current-password"
+            />
+            <button
+              type="button"
+              class="password-toggle"
+              (click)="togglePasswordVisibility()"
+              aria-label="Toggle password visibility"
+            >
+              <span>{{ showPassword ? '👁️' : '🙈' }}</span>
+            </button>
+          </div>
+          @if (isFieldInvalid('password')) {
+            <div class="field-error">
+              {{ getFieldError('password') }}
+            </div>
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="login-btn"
+          [disabled]="loading"
+          [class.loading]="loading"
+        >
+          @if (!loading) {
+            <span>Sign In</span>
+          }
+          @if (loading) {
+            <span class="loading-spinner">
+              <span class="spinner"></span>
+              Signing In...
+            </span>
+          }
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="divider">
+        <span>or</span>
+      </div>
+
+      <!-- Google Sign In -->
+      <div class="google-signin">
+        <div id="google-signin-button"></div>
+      </div>
+
+      <!-- Sign Up Link -->
+      <div class="signup-link">
+        <p>Don't have an account? <a routerLink="/register">Sign up here</a></p>
+      </div>
+
+      <!-- Forgot Password -->
+      <div class="forgot-password">
+        <a href="#" class="forgot-link">Forgot your password?</a>
+      </div>
+    </div>
+  </div>
+</div> 

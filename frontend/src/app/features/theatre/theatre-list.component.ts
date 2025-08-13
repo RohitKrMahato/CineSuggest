@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { TheatreService } from '../../core/theatre.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { TheatreService } from '../../core/theatre.service';
   templateUrl: './theatre-list.component.html',
   styleUrls: ['./theatre-list.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   providers: [TheatreService]
 })
 export class TheatreListComponent implements OnInit {

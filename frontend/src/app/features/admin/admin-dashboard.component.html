@@ -1,5 +1,19 @@
 <div class="admin-dashboard">
-  <h2>Admin Dashboard</h2>
+  <!-- Demo Banner -->
+  <div class="demo-banner">
+    <span class="demo-icon">🎭</span>
+    <div class="demo-text">
+      <strong>Admin Demo Mode</strong>
+      <p>Explore admin features - all changes are temporary and for demonstration only</p>
+    </div>
+  </div>
+
+  <div class="header">
+    <h2>🛠️ Admin Dashboard</h2>
+    <a routerLink="/home" class="btn-back">
+      <span class="btn-icon">🏠</span> Back to Home
+    </a>
+  </div>
   <div class="dashboard-tabs">
     <button (click)="activeTab = 'add'" [class.active]="activeTab === 'add'">Add</button>
     <button (click)="activeTab = 'list'" [class.active]="activeTab === 'list'">List</button>
